@@ -7,6 +7,15 @@ function nFactorial(n) {
   // devolvé el factorial de n (n!)
   // ej:
   // el factorial de 3 es 6 (3 * 2 * 1)
+  if(n > -1 && n < 2){
+    return 1;
+  }
+  else if(n < 0){
+    return 0;
+  }
+  else{
+    return n * nFactorial(n-1)
+  }
 }
 
 function nFibonacci(n) {
@@ -15,9 +24,8 @@ function nFibonacci(n) {
   // nFibonacci(0) // 0  // el elemento 0 es cero
   // nFibonacci(1) // 1 // el elemento 1 es 1
   // nFibonacci(6) // 1 // el elemento 6 es 8
-
+  return n==0 ? 0 : n == 1 ? 1 : nFibonacci(n-1) + nFibonacci(n-2);
 }
-
 // Para esta parte no es necesario utilizar recursión.
 // Implementa la clase Queue que debe contener los siguientes métodos:
 // enqueue: Agrega un valor a la queue. Respeta el orden existente.
@@ -25,9 +33,23 @@ function nFibonacci(n) {
 // size: Devuelve el número de elementos que contiene la queue.
 
 function Queue() {
-
+  this.queue = [];
 }
 
+Queue.prototype.enqueue = function(value){
+  this.queue.size += 1;
+  return this.queue.push(value);
+  }
+Queue.prototype.dequeue = function(){
+  if(this.size() == 0){
+    return undefined;
+  }
+  this.queue.size -= 1;
+  return this.queue.shift();
+  }
+Queue.prototype.size = function(){
+  return this.queue.length;
+  }
 // No modifiquen nada debajo de esta linea
 // --------------------------------
 
