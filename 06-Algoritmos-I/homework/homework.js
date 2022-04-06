@@ -6,20 +6,20 @@ function factorear(num) {
   // los factores por los cuales se va dividiendo a dicho número (De menor a mayor)
   // Ej: factorear(180) --> [1, 2, 2, 3, 3, 5] Ya que 1x2x2x3x3x5 = 180 y son todos números primos
   // Tu código:
-  let div = [1];
-  let i = 2;
-  while(i <= num){
-    if(num % i === 0){
-      if(esPrimo(i)){
-        while(num % i === 0){
-          div.push(i);
-          num /= i;
+  let factores = [1]; 
+  let div = 2;
+  while(div <= num){
+    if(num % div === 0){
+      if(esPrimo(div)){
+        while(num % div === 0){
+          factores.push(div);
+          num /= div;
         }
       }
     }
-    i++;
+    div++;
   }
-  return div;
+  return factores;
 }
 
 function esPrimo(num){
@@ -36,18 +36,20 @@ function bubbleSort(array) {
   // el array recibido como parámetro
   // Devolver el array ordenado resultante
   // Tu código:
-  for(let primero = 0; primero < array.length; primero++){
-    for(let segundo = 0; segundo < array.length; segundo++){
-      if(array[primero] < array[segundo]){
-        let ex_primero = array[primero];
-        array[primero] = array[segundo];
-        array[segundo] = ex_primero;
+  let swap = true;
+  while(swap){
+    swap = false;
+    for(let i = 0; i < array.length-1; i++){
+      if(array[i] > array[i+1]){
+        var aux = array[i]
+        array[i] = array[i+1]
+        array[i+1] = aux
+        swap = true;
       }
     }
   }
   return array;
 }
-
 
 function insertionSort(array) {
   // Implementar el método conocido como insertionSort para ordenar de menor a mayor
