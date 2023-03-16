@@ -1,4 +1,7 @@
 'use strict'
+
+const DeleteRequireCache = require("@11ty/eleventy/src/Util/DeleteRequireCache");
+
 // No cambies los nombres de las funciones.
 
 function quickSort(array) {
@@ -51,7 +54,6 @@ function merge(left,right){
     }
   }
   return merged.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
-
 }
 
 
